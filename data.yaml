@@ -1,0 +1,8 @@
+
+path: "C:/Users/avika/Downloads/dataset/images"
+train: "C:/Users/avika/Downloads/dataset/images/train"
+val: "C:/Users/avika/Downloads/dataset/images/val"
+
+names:
+  0: weed
+  1: crop
