@@ -2,10 +2,13 @@ import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
+import os
 
 @st.cache_resource
 def load_model():
-    return YOLO(r"C:/Users/avika/Downloads/pp/runs/detect/yolo_weed_detection/weights/best.pt")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    MODEL_PATH = os.path.join(BASE_DIR, "best.pt")
+    return YOLO(MODEL_PATH)
 
 model = load_model()
 
@@ -47,4 +50,5 @@ if uploaded_file is not None:
             conf_score = float(box.conf[0])
             st.write(f"**{label}** – Confidence: {conf_score:.2f}")
     else:
+
         st.warning("No objects detected. Try lowering confidence or different image.")
