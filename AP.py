@@ -1,12 +1,18 @@
+import os
+
+# ===== CLOUD FIX (IMPORTANT) =====
+os.environ["OPENCV_OPENGL"] = "0"
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+# =================================
+
 import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
-import os
 
 @st.cache_resource
 def load_model():
-    return YOLO("run/best.pt")   # ✅ YOUR PATH
+    return YOLO("runs/best.pt")   # ✅ FIXED PATH
 
 model = load_model()
 
@@ -48,6 +54,4 @@ if uploaded_file is not None:
             conf_score = float(box.conf[0])
             st.write(f"**{label}** – Confidence: {conf_score:.2f}")
     else:
-
-        st.warning("No objects detected. Try lowering confidence or different image.")
-
+        st.warning("No objects detected. Try lowering confidence or a different image.")
