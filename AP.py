@@ -6,9 +6,7 @@ import os
 
 @st.cache_resource
 def load_model():
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    MODEL_PATH = os.path.join(BASE_DIR, "best.pt")
-    return YOLO(MODEL_PATH)
+    return YOLO("run/best.pt")   # ✅ YOUR PATH
 
 model = load_model()
 
@@ -52,3 +50,4 @@ if uploaded_file is not None:
     else:
 
         st.warning("No objects detected. Try lowering confidence or different image.")
+
