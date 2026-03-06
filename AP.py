@@ -12,7 +12,7 @@ import numpy as np
 
 @st.cache_resource
 def load_model():
-    return YOLO("runs/best.pt")   # ✅ FIXED PATH
+    return YOLO("runs/best.pt")   
 
 model = load_model()
 
@@ -55,3 +55,4 @@ if uploaded_file is not None:
             st.write(f"**{label}** – Confidence: {conf_score:.2f}")
     else:
         st.warning("No objects detected. Try lowering confidence or a different image.")
+
